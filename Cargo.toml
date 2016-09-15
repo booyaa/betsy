@@ -1,0 +1,17 @@
+[package]
+name = "betsy"
+version = "0.1.0"
+authors = ["Mark Sta Ana <booyaabooyaabooyaa@gmail.com>"]
+description = "An AppVeyor cli written in Rust"
+repository = "https://github.com/booyaa/betsy"
+readme = "README.md"
+keywords = ["appveyor","cli","happv"]
+license = "Apache-2.0"
+[dependencies]
+# happv = "0.1"
+# local dev
+happv = { path = "/Users/booyaa/Dev/rust/foundry/happv" }
+log = "0.3"
+env_logger = "0.3"
+clap = "2.9"
+dotenv = "*"
