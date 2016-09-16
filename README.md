@@ -1,4 +1,4 @@
-# betsy
+# betsy v0.1.3
 
 A [AppVeyor](https://ci.appveyor.com) client.
 
@@ -7,6 +7,10 @@ A [AppVeyor](https://ci.appveyor.com) client.
 `cargo install betsy`
 
 # Usage
+
+Each call requires your APPVEYOR [token](https://ci.appveyor.com/api-token). You can either invoke it using the following: `APPVEYOR=your_appveyor_token betsy list`
+
+Or store the variable in `.env` file in your home directory.
 
 ```
 USAGE:
@@ -22,6 +26,10 @@ SUBCOMMANDS:
     help       Prints this message or the help of the given subcommand(s)
     list       Lists projects
 ```
+
+# To do
+
+Can be found [here](https://github.com/booyaa/betsy/issues?q=is%3Aissue+is%3Aopen+label%3Aenhancement).
 
 Copyright 2016 Mark Sta Ana.
 
