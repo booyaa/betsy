@@ -18,7 +18,6 @@ FLAGS:
 
 SUBCOMMANDS:
     disable    Disable a project
-
     enable     Enable a project
     help       Prints this message or the help of the given subcommand(s)
     list       Lists projects

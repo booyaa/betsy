@@ -1,6 +1,6 @@
 [package]
 name = "betsy"
-version = "0.1.2"
+version = "0.1.3"
 authors = ["Mark Sta Ana <booyaabooyaabooyaa@gmail.com>"]
 description = "An AppVeyor cli written in Rust"
 repository = "https://github.com/booyaa/betsy"
@@ -14,5 +14,5 @@ happv = "0.1"
 log = "0.3"
 env_logger = "0.3"
 clap = "2.9"
-dotenv = "*"
-rust-ini = "*"
+dotenv = "0.8"
+rust-ini = "0.9"

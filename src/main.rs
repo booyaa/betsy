@@ -36,7 +36,7 @@ fn main() {
     if matches.is_present("enable") {
         enable(&token);
     } else if matches.is_present("disable") {
-        println!("disable project");
+        disable(&token);
     } else if matches.is_present("list") {
         list(&token);
     } else {
@@ -71,11 +71,48 @@ fn enable(token: &str) {
         println!("Project has been enabled!");
 
     } else {
-        println!("Error adding project!");
+        println!("Error enabling project!");
         std::process::exit(1);
     }
 }
 
+fn disable(token: &str) {
+    let repository_name = get_repository_name();
+    println!("repository: {:?}", repository_name);
+
+    let happv = AppVeyor::new(&token);
+    let result = happv.get_projects();
+
+    let mut account_name = String::new();
+    let mut project_slug = String::new();
+
+    if result.is_ok() {
+        for i in result.unwrap() {
+            let repository_match = format!("{}/{}", i.account_name, i.slug);
+            debug!("{} == {}", repository_match, repository_name);
+            if repository_name == repository_match {
+                account_name = i.account_name;
+                project_slug = i.slug;
+                break;
+            }
+        }
+        if account_name.is_empty() || project_slug.is_empty() {
+            println!("Couldn't find project on AppVeyor!");
+            std::process::exit(1);
+        }
+
+        let result = happv.delete_project(account_name, project_slug);
+        if result.is_ok() {
+            println!("Project disabled!");
+        } else {
+            println!("Failed to disable project!");
+            std::process::exit(1);
+        }
+    } else {
+        println!("Error retrieving project list from AppVeyor!");
+        std::process::exit(1);
+    }
+}
 
 
 fn get_repository_name() -> String {
